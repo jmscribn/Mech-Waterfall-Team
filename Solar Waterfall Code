@@ -1,0 +1,42 @@
+#define direction RC6_bit
+#define step RC3_bit
+#define Right_Button RA1_bit
+#define Left_Button RA2_bit
+#define No_Buttons PORTA
+
+void RIGHT(void){
+	step = 1; //move right
+	Delay_us(100); //wait
+}
+
+void LEFT(void){
+	step = 0; //move right
+	Delay_us(100); //wait
+}
+
+//void STOP(void){
+
+//
+//}
+
+
+void main() {
+	TRISA = 0xFF;
+	TRISB = 0;
+	direction = 0;
+	step = 0;
+
+	while (1) {
+		if (Left_Button == 1) {
+			LEFT;
+		}
+
+		else if (Right_Button == 1) {
+			RIGHT;
+		}
+		//step = 1;
+		//Delay_us(100);
+		//step = 0;
+		//Delay_us(100);
+	}
+}
